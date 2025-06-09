@@ -13,9 +13,18 @@ include(helpers)
 
 add_library(${CMAKE_PROJECT_NAME} MODULE)
 
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/libobs)
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/deps/w32-pthreads)
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/UI/obs-frontend-api)
+if(OS_WINDOWS)
+  list(APPEND CMAKE_PREFIX_PATH
+    ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/libobs
+    ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/deps/w32-pthreads
+    ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_x64/UI/obs-frontend-api
+  )
+elseif(OS_MACOS)
+  list(APPEND CMAKE_PREFIX_PATH
+    ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_universal/libobs
+    ${CMAKE_CURRENT_SOURCE_DIR}/.deps/obs-studio-31.0.0/build_universal/UI/obs-frontend-api
+  )
+endif()
 
 find_package(libobs REQUIRED)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE OBS::libobs)
