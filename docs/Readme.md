@@ -23,6 +23,12 @@
 
 現在、更新の自動チェック機能は搭載していません。
 
+# macOS版インストール手順
+
+OBS を終了した状態で `obs-multi-rtmp.plugin` を
+`~/Library/Application Support/obs-studio/plugins` に配置してください。
+OBS を再起動するとプラグインが読み込まれます。
+
 
 # Windows版インストール手順
 

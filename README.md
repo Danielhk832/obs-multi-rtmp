@@ -50,5 +50,14 @@ If you find this tool useful and want to doante, here is the link. (Please do no
 
 ## Build
 
-This project uses obs-plugintemplate.   
+This project uses obs-plugintemplate.
 Please refer to obs-plugintemplate to understand how it works.
+
+### macOS
+
+Use the provided preset to configure and build:
+
+```bash
+cmake --preset macos
+cmake --build build_macos --config Release
+```
